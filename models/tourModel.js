@@ -172,10 +172,10 @@ tourSchema.pre(/^find/, function (next) {
 //   next(); // If we don't call next, the call will be stuck in that middleware
 // });
 
-tourSchema.post(/^find/, function (docs, next) {
-  console.log(`Execution time: ${Date.now() - this.start} milliseconds`);
-  next();
-});
+// tourSchema.post(/^find/, function (docs, next) {
+//   console.log(`Execution time: ${Date.now() - this.start} milliseconds`);
+//   next();
+// });
 
 // Crating a Model out of the Schema
 const Tour = mongoose.model('Tour', tourSchema);
