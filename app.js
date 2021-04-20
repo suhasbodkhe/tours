@@ -23,7 +23,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 //1. GLOBAL MIDDLEWARES
 // Serving static files
-// app.use(express.static(`${__dirname}/public`)); // This line is similar to the one below but path saves us from unexpected relative paths (slashes, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Security HTTP headers

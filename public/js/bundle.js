@@ -6664,12 +6664,8 @@ var displayMap = function displayMap(locations) {
   mapboxgl.accessToken = 'pk.eyJ1Ijoic3VoYXNib2RraGUiLCJhIjoiY2tuaWRhYmN4MDY1MTJvbWc5MzcyODFlcSJ9.kLILZqLQ4nIE84vGgHnKoA';
   var map = new mapboxgl.Map({
     container: 'map',
-    // container is map and hence we have used #map in the tour.pug
     style: 'mapbox://styles/suhasbodkhe/cknitu4mz0t1317nk38nptrzt',
-    scrollZoom: false //   center: [-118.113491, 34.111745],
-    //   zoom: 10,
-    //   interactive: false,
-
+    scrollZoom: false
   });
   var bounds = new mapboxgl.LngLatBounds();
   locations.forEach(function (loc) {
@@ -8610,7 +8606,7 @@ var logout = /*#__PURE__*/function () {
             res = _context2.sent;
 
             if (res.data.status === 'success') {
-              location.reload(true); // true here will force reload from server and not from browser cache
+              location.reload(true);
             }
 
             _context2.next = 10;
@@ -8733,7 +8729,6 @@ var bookTour = /*#__PURE__*/function () {
 
           case 3:
             session = _context.sent;
-            // this is a 'get' request
             console.log('session: ', session); // 2. Create checkout form + charge the credit card
 
             _context.next = 7;

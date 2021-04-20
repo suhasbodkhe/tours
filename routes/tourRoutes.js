@@ -37,8 +37,7 @@ router
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
     tourController.createTour
-  ); // First parameter here now is a middleware
-// .post(tourController.checkbody, tourController.createTour); // First parameter here now is a middleware
+  );
 
 router
   .route('/:id')

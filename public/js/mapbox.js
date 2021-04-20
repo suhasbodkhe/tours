@@ -4,12 +4,9 @@ export const displayMap = (locations) => {
   mapboxgl.accessToken =
     'pk.eyJ1Ijoic3VoYXNib2RraGUiLCJhIjoiY2tuaWRhYmN4MDY1MTJvbWc5MzcyODFlcSJ9.kLILZqLQ4nIE84vGgHnKoA';
   var map = new mapboxgl.Map({
-    container: 'map', // container is map and hence we have used #map in the tour.pug
+    container: 'map',
     style: 'mapbox://styles/suhasbodkhe/cknitu4mz0t1317nk38nptrzt',
     scrollZoom: false,
-    //   center: [-118.113491, 34.111745],
-    //   zoom: 10,
-    //   interactive: false,
   });
 
   const bounds = new mapboxgl.LngLatBounds();

@@ -2,7 +2,6 @@ const express = require('express');
 const bookingController = require('../controllers/bookingController');
 const authController = require('../controllers/authController');
 
-// MergeParams lets us use methods on routes of this router to other router
 const router = express.Router();
 
 router.use(authController.protect);

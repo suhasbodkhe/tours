@@ -36,7 +36,12 @@ router.use(protect);
 
 router.route('/updatePassword').patch(updatePassword);
 router.get('/currentUser', getCurrentUser, getUser);
-router.patch('/updateCurrentUser', uploadUserPhoto, resizeUserPhoto, updateCurrentUser); // 'photo' here is name of the form field having related details
+router.patch(
+  '/updateCurrentUser',
+  uploadUserPhoto,
+  resizeUserPhoto,
+  updateCurrentUser
+);
 router.delete('/deleteCurrentUser', deleteCurrentUser);
 
 router.use(restrictTo('admin'));
