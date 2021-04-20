@@ -145,25 +145,6 @@ tourSchema.pre('save', function (next) {
   next();
 });
 
-// Performs "Embedding" in the MongoDB
-// tourSchema.pre('save', async function (next) {
-//   const guidesPromises = this.guides.map(async (id) => await User.findById(id));
-//   this.guides = await Promise.all(guidesPromises);
-//   next();
-// });
-
-// tourSchema.pre('save', (next) => {
-//   console.log('Will save document');
-//   next();
-// });
-
-// tourSchema.post('save', (_doc, next) => {
-//   console.log(_doc);
-//   next();
-// });
-
-// QUERY MIDDLEWARE
-// tourSchema.pre('find', function (next) {
 // All queries starting with 'find'
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
