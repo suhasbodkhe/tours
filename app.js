@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -25,6 +26,21 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 //1. GLOBAL MIDDLEWARES
+// Implement CORS - This will set Access-Control-Allow-Origin: * (allow all)
+// If cors needs to be applied to a sepcific route then add it in the ROUTES middleware stack 
+// e.g. app.use('/api/v1/tours', cors(), tourRouter);
+app.use(cors());
+// Setting cors for just a specific url/origin
+// We have api.tours.com (backend) and tours.com as front-end
+// app.use(cors({
+//   origin: 'https://www.tours.com'
+// }))
+
+// Set to which http method the app can respond to
+app.options('*', cors());
+// to a specific route
+// app.options('/api/v1/tours/:id', cors());
+
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
