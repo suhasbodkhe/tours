@@ -12,6 +12,7 @@ const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const bookingController = require('./controllers/bookingController');
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
@@ -27,7 +28,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 //1. GLOBAL MIDDLEWARES
 // Implement CORS - This will set Access-Control-Allow-Origin: * (allow all)
-// If cors needs to be applied to a sepcific route then add it in the ROUTES middleware stack 
+// If cors needs to be applied to a sepcific route then add it in the ROUTES middleware stack
 // e.g. app.use('/api/v1/tours', cors(), tourRouter);
 app.use(cors());
 // Setting cors for just a specific url/origin
@@ -81,6 +82,16 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP. Please try again in an hour',
 });
 app.use('/api', limiter);
+
+// Putting this route before other Routes becuase stripe expects this body as a stream and not json.
+// On line 91, we are parsing the body to json and then other routes (in Routes folder) receive this json body.
+app.post(
+  '/webhook-checkout',
+  express.raw({
+    type: 'application/json',
+  }),
+  bookingController.webhookCheckout
+);
 
 // Body parser: Reading data from the body into req.body
 app.use(
