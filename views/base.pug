@@ -9,7 +9,7 @@ html
             link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,400,400i,700')
             title Natours | #{title}
 
-    body
+    body(data-alert=`${alert ? alert : ''}`)
         //- h1= tour
         //- h1 Park Camper
         //- Line below is an example of buffered code
