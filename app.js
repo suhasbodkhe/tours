@@ -37,7 +37,7 @@ app.use(cors());
 //   origin: 'https://www.tours.com'
 // }))
 
-// Set to which http method the app can respond to
+// Set which http method the app can respond to
 app.options('*', cors());
 // to a specific route
 // app.options('/api/v1/tours/:id', cors());
